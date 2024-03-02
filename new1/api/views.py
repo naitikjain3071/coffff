@@ -15,10 +15,9 @@ import cv2
 def run_analysis(image: np.ndarray):
     lab_image = cv2.cvtColor(image, cv2.COLOR_RGB2LAB)
 
-    # Calculate the average of L*, a*, and b* channels
-    L_score = np.mean(lab_image[:, :, 0])  * (100.0 / 255.0)
-    a_score = np.mean(lab_image[:, :, 1]) - 128
-    b_score = np.mean(lab_image[:, :, 2]) - 128
+    L_score = np.mean(lab_image[:, :, 0])  * (100.0 / 255.0) # lightness
+    a_score = np.mean(lab_image[:, :, 1]) - 128 # green to red
+    b_score = np.mean(lab_image[:, :, 2]) - 128 # blue to yellow
     lab_image_list = lab_image.tolist()
     return {
         "error_message": "",

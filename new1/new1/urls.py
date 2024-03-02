@@ -20,5 +20,4 @@ from api.views import analysis
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('analyze/', analysis, name='analysis'),
-    # path('api/', include('new1.urls', namespace='new1')),
 ]
