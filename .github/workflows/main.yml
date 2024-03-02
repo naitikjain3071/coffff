@@ -12,7 +12,7 @@ env:
  ECS_CLUSTER: CoffeeCluster # set this to your Amazon ECS cluster nameewe
  ECS_TASK_DEFINITION: new1/CoffeeDefinition.json # set this to the path to your Amazon ECS task definition
  # file, e.g. .aws/task-definition.json
- CONTAINER_NAME: CoffeeContainer2 # set this to the name of the container in the
+ CONTAINER_NAME: CoffeeContainer3 # set this to the name of the container in the
  # containerDefinitions section of your task definition
 
 
