@@ -6,15 +6,14 @@ on:
       - main
 env:
  AWS_REGION: us-east-2 # set this to your preferred AsWS region, e.g. us-west-1
- ECR_REPOSITORY: coffeefinal # set this to your Amazon ECR repository name1
- ECS_SERVICE: Servname # set this to your Amazon ECS service name
- ECS_CLUSTER: clust1 # set this to your Amazon ECS cluster nameewe
- ECS_TASK_DEFINITION: new1/mytaskdefinition_1.json # set this to the path to your Amazon ECS task definition
+ ECR_REPOSITORY: my-coff-app # set this to your Amazon ECR repository name1
+ ECS_SERVICE: CoffeeService # set this to your Amazon ECS service name
+ ECS_CLUSTER: CoffeeCluster # set this to your Amazon ECS cluster nameewe
+ ECS_TASK_DEFINITION: new1/CoffeeDefinition.json # set this to the path to your Amazon ECS task definition
  # file, e.g. .aws/task-definition.json
- CONTAINER_NAME: Cont1 # set this to the name of the container in the
+ CONTAINER_NAME: CoffeeContainer # set this to the name of the container in the
  # containerDefinitions section of your task definition
-permissions:
- contents: read
+
 jobs:
   deploy:
     name: Deploy
@@ -37,24 +36,23 @@ jobs:
         id: build-image
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          ECR_REPOSITORY: coffeefinal
-          IMAGE_TAG: latest
+          IMAGE_TAG: ${{ github.sha }}
         run: |
-          docker build -t coffeefinal -f new1/Dockerfile new1
-          docker tag coffeefinal:latest ${{ steps.login-ecr.outputs.registry }}/coffeefinal:latest
-          docker push ${{ steps.login-ecr.outputs.registry }}/coffeefinal:latest
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
       - name: Fill in the new image ID in the Amazon ECS task definition
         id: task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
           task-definition: ${{ env.ECS_TASK_DEFINITION }}
-          container-name: Cont1
-          image: ${{ steps.login-ecr.outputs.registry }}/${{ steps.build-image.outputs.image }}
+          container-name: ${{ env.CONTAINER_NAME }}
+          image: ${{ steps.build-image.outputs.image }}
 
       - name: Deploy Amazon ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
-          service: Servname
-          cluster: clust1
+          service: ${{ env.ECS_SERVICE }}
+          cluster: ${{ env.ECS_CLUSTER }}
           task-definition: ${{ steps.task-def.outputs.task-definition }}
-
+          wait-for-service-stability: true
