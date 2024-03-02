@@ -57,8 +57,4 @@ jobs:
           service: Servname
           cluster: clust1
           task-definition: ${{ steps.task-def.outputs.task-definition }}
-          wait-for-service-stability: true
 
-
-
-          
