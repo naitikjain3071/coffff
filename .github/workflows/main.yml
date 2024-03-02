@@ -40,9 +40,9 @@ jobs:
           ECR_REPOSITORY: coffeefinal
           IMAGE_TAG: latest
         run: |
-          docker build -t coffeefinal -f new1/Dockerfile .
-          docker tag coffeefinal:latest 058264489106.dkr.ecr.us-east-2.amazonaws.com/coffeefinal:latest
-          docker push 058264489106.dkr.ecr.us-east-2.amazonaws.com/coffeefinal:latest
+          docker build -t coffeefinal -f new1/Dockerfile new1
+          docker tag coffeefinal:latest ${{ steps.login-ecr.outputs.registry }}/coffeefinal:latest
+          docker push ${{ steps.login-ecr.outputs.registry }}/coffeefinal:latest
       - name: Fill in the new image ID in the Amazon ECS task definition
         id: task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
