@@ -1,13 +1,15 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-east-2:058264489106:task-definition/CoffeeDefinition:1",
+    "taskDefinitionArn": "arn:aws:ecs:us-east-2:058264489106:task-definition/TaskDefinitionNew:1",
     "containerDefinitions": [
         {
-            "name": "CoffeeContainer",
-            "image": "058264489106.dkr.ecr.us-east-2.amazonaws.com/my-coff-app:latest",
-            "cpu": 0,
+            "name": "CoffeeContainer2",
+            "image": "058264489106.dkr.ecr.us-east-2.amazonaws.com/my-coff-app",
+            "cpu": 1024,
+            "memory": 3072,
+            "memoryReservation": 1024,
             "portMappings": [
                 {
-                    "name": "coffeecontainer-8000-tcp",
+                    "name": "coffee-container-port",
                     "containerPort": 8000,
                     "hostPort": 8000,
                     "protocol": "tcp",
@@ -24,16 +26,22 @@
                 "logDriver": "awslogs",
                 "options": {
                     "awslogs-create-group": "true",
-                    "awslogs-group": "/ecs/CoffeeDefinition",
+                    "awslogs-group": "/ecs/TaskDefinitionNew",
                     "awslogs-region": "us-east-2",
                     "awslogs-stream-prefix": "ecs"
                 },
                 "secretOptions": []
             },
-            "systemControls": []
+            "systemControls": [],
+            "resourceRequirements": [
+                {
+                    "value": "1",
+                    "type": "GPU"
+                }
+            ]
         }
     ],
-    "family": "CoffeeDefinition",
+    "family": "TaskDefinitionNew",
     "taskRoleArn": "arn:aws:iam::058264489106:role/ecsTaskExecutionRole",
     "executionRoleArn": "arn:aws:iam::058264489106:role/ecsTaskExecutionRole",
     "revision": 1,
@@ -51,6 +59,9 @@
         },
         {
             "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.21"
         },
         {
             "name": "com.amazonaws.ecs.capability.task-iam-role"
@@ -73,12 +84,12 @@
         "EC2"
     ],
     "cpu": "1024",
-    "memory": "8192",
+    "memory": "3072",
     "runtimePlatform": {
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2024-03-02T19:11:15.949Z",
+    "registeredAt": "2024-03-02T23:28:05.385Z",
     "registeredBy": "arn:aws:iam::058264489106:root",
     "tags": []
 }
