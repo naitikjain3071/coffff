@@ -75,7 +75,8 @@ RUN apt-get update && apt-get install -y gcc libc6-dev \
 
 # Copy the application
 COPY . /app/
-
+COPY uwsgi.ini /app/
+COPY requirements.txt /app/
 # Create a user and group, set ownership to the created user
 RUN addgroup --system django && adduser --system --ingroup django django \
     && chown -R django:django /app
