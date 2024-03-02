@@ -41,6 +41,7 @@ jobs:
           IMAGE_TAG: latest
           REPOSITORY: my-coff-app
         run: |
+          cd new1
           docker build -t $ECR_REGISTRY/$REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$REPOSITORY:$IMAGE_TAG
           echo "image=$ECR_REGISTRY/$REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
