@@ -44,10 +44,10 @@ jobs:
           IMAGE_TAG: latest
           REPOSITORY: my-coff-app
         run: |
-          cd new1
-          docker build -t $ECR_REGISTRY/$REPOSITORY:$IMAGE_TAG .
-          docker push $ECR_REGISTRY/$REPOSITORY:$IMAGE_TAG
-          echo "image=$ECR_REGISTRY/$REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
+
+          docker build -t coffeefinal -f new1/Dockerfile new1
+          docker tag coffeefinal:latest ${{ steps.login-ecr.outputs.registry }}/coffeefinal:latest
+          docker push ${{ steps.login-ecr.outputs.registry }}/coffeefinal:latest
       - name: Fill in the new image ID in the Amazon ECS task definition
         id: task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
