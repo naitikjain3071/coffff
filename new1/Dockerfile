@@ -5,7 +5,7 @@
 # ENV PYTHONDONTWRITEBYTECODE 1
 # ENV PYTHONUNBUFFERED 1
 
-# # Set the working directory in the container
+# # Set the working direxctory in the container
 # WORKDIR /app
 
 # # Install Python dependencies
@@ -42,7 +42,7 @@ RUN pip install uwsgi
 # Copy the current directory contents into the container at /app
 COPY . /app/
 COPY uwsgi.ini /app/
-
+COPY requirements.txt /app/
 # Create a user and group
 RUN addgroup --system django && adduser --system --ingroup django django
 
