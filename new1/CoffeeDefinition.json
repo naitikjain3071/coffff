@@ -1,14 +1,15 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-east-2:058264489106:task-definition/TaskDefinitionNew2:1",
+    "taskDefinitionArn": "arn:aws:ecs:us-east-2:058264489106:task-definition/CoffeeDefinition3:1",
     "containerDefinitions": [
         {
-            "name": "CoffeeContainer3",
+            "name": "Container6",
             "image": "058264489106.dkr.ecr.us-east-2.amazonaws.com/my-coff-app",
-            "cpu": 1024,
-            "memory": 500,
+            "cpu": 410,
+            "memory": 410,
+            "memoryReservation": 102,
             "portMappings": [
                 {
-                    "name": "container3-8000",
+                    "name": "container6-port",
                     "containerPort": 8000,
                     "hostPort": 8000,
                     "protocol": "tcp",
@@ -21,16 +22,20 @@
             "mountPoints": [],
             "volumesFrom": [],
             "ulimits": [],
-            "systemControls": [],
-            "resourceRequirements": [
-                {
-                    "value": "3",
-                    "type": "GPU"
-                }
-            ]
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-create-group": "true",
+                    "awslogs-group": "/ecs/CoffeeDefinition3",
+                    "awslogs-region": "us-east-2",
+                    "awslogs-stream-prefix": "ecs"
+                },
+                "secretOptions": []
+            },
+            "systemControls": []
         }
     ],
-    "family": "TaskDefinitionNew2",
+    "family": "CoffeeDefinition3",
     "taskRoleArn": "arn:aws:iam::058264489106:role/ecsTaskExecutionRole",
     "executionRoleArn": "arn:aws:iam::058264489106:role/ecsTaskExecutionRole",
     "revision": 1,
@@ -38,7 +43,16 @@
     "status": "ACTIVE",
     "requiresAttributes": [
         {
+            "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+        },
+        {
+            "name": "ecs.capability.execution-role-awslogs"
+        },
+        {
             "name": "com.amazonaws.ecs.capability.ecr-auth"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
         },
         {
             "name": "com.amazonaws.ecs.capability.docker-remote-api.1.21"
@@ -51,6 +65,9 @@
         },
         {
             "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.29"
         }
     ],
     "placementConstraints": [],
@@ -60,13 +77,13 @@
     "requiresCompatibilities": [
         "EC2"
     ],
-    "cpu": "10240",
-    "memory": "15360",
+    "cpu": "512",
+    "memory": "410",
     "runtimePlatform": {
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2024-03-02T23:41:32.034Z",
+    "registeredAt": "2024-03-03T00:46:10.337Z",
     "registeredBy": "arn:aws:iam::058264489106:root",
     "tags": []
 }
