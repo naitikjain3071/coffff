@@ -6,16 +6,12 @@ on:
     branches:
       - main
 env:
- AWS_REGION: us-east-2 # set this to your preferred AsWS region, e.g. us-west-1
- ECR_REPOSITORY: my-coff-app # set this to your Amazon ECR repository name1
- ECS_SERVICE: CoffeeService # set this to your Amazon ECS service name
- ECS_CLUSTER: CoffeeCluster # set this to your Amazon ECS cluster nameewe
- ECS_TASK_DEFINITION: new1/CoffeeDefinition.json # set this to the path to your Amazon ECS task definition
- # file, e.g. .aws/task-definition.json
- CONTAINER_NAME: CoffeeContainer3 # set this to the name of the container in the
- # containerDefinitions section of your task definition
-
-
+ AWS_REGION: us-east-2 
+ ECR_REPOSITORY: my-coff-app 
+ ECS_SERVICE: Service2 
+ ECS_CLUSTER: CoffeeCluster 
+ ECS_TASK_DEFINITION: new1/CoffeeDefinition.json 
+ CONTAINER_NAME: CoffeeContainer3 
 jobs:
   deploy:
     name: Deploy
