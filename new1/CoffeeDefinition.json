@@ -1,15 +1,15 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-east-2:058264489106:task-definition/Definition8:1",
+    "taskDefinitionArn": "arn:aws:ecs:us-east-2:058264489106:task-definition/Definition9:2",
     "containerDefinitions": [
         {
-            "name": "Container8",
+            "name": "Container9",
             "image": "058264489106.dkr.ecr.us-east-2.amazonaws.com/my-coff-app",
             "cpu": 410,
             "memory": 410,
             "memoryReservation": 102,
             "portMappings": [
                 {
-                    "name": "container8-port",
+                    "name": "container9-80-tcp",
                     "containerPort": 80,
                     "hostPort": 0,
                     "protocol": "tcp",
@@ -22,37 +22,18 @@
             "mountPoints": [],
             "volumesFrom": [],
             "ulimits": [],
-            "logConfiguration": {
-                "logDriver": "awslogs",
-                "options": {
-                    "awslogs-create-group": "true",
-                    "awslogs-group": "/ecs/Definition8",
-                    "awslogs-region": "us-east-2",
-                    "awslogs-stream-prefix": "ecs"
-                },
-                "secretOptions": []
-            },
             "systemControls": []
         }
     ],
-    "family": "Definition8",
+    "family": "Definition9",
     "taskRoleArn": "arn:aws:iam::058264489106:role/ecsTaskExecutionRole",
     "executionRoleArn": "arn:aws:iam::058264489106:role/ecsTaskExecutionRole",
-    "revision": 1,
+    "revision": 2,
     "volumes": [],
     "status": "ACTIVE",
     "requiresAttributes": [
         {
-            "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
-        },
-        {
-            "name": "ecs.capability.execution-role-awslogs"
-        },
-        {
             "name": "com.amazonaws.ecs.capability.ecr-auth"
-        },
-        {
-            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
         },
         {
             "name": "com.amazonaws.ecs.capability.docker-remote-api.1.21"
@@ -65,9 +46,6 @@
         },
         {
             "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
-        },
-        {
-            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.29"
         }
     ],
     "placementConstraints": [],
@@ -83,7 +61,7 @@
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2024-03-03T02:07:35.193Z",
+    "registeredAt": "2024-03-03T02:17:35.344Z",
     "registeredBy": "arn:aws:iam::058264489106:root",
     "tags": []
 }
