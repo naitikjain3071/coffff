@@ -8,10 +8,10 @@ on:
 env:
  AWS_REGION: us-east-2 
  ECR_REPOSITORY: my-coff-app 
- ECS_SERVICE: Service11
+ ECS_SERVICE: Service12
  ECS_CLUSTER: Cluster2 
  ECS_TASK_DEFINITION: new1/CoffeeDefinition.json 
- CONTAINER_NAME: Container10
+ CONTAINER_NAME: Container12
 jobs:
   deploy:
     name: Deploy
