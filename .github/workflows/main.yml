@@ -11,7 +11,7 @@ env:
  ECS_SERVICE: Service10
  ECS_CLUSTER: CoffeeCluster 
  ECS_TASK_DEFINITION: new1/CoffeeDefinition.json 
- CONTAINER_NAME: Container19
+ CONTAINER_NAME: Container10
 jobs:
   deploy:
     name: Deploy
