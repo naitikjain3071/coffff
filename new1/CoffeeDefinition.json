@@ -1,17 +1,17 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-east-2:058264489106:task-definition/Definition9:2",
+    "taskDefinitionArn": "arn:aws:ecs:us-east-2:058264489106:task-definition/Definition10:1",
     "containerDefinitions": [
         {
-            "name": "Container9",
+            "name": "Container10",
             "image": "058264489106.dkr.ecr.us-east-2.amazonaws.com/my-coff-app",
             "cpu": 410,
             "memory": 410,
-            "memoryReservation": 102,
+            "memoryReservation": 410,
             "portMappings": [
                 {
-                    "name": "container9-80-tcp",
-                    "containerPort": 80,
-                    "hostPort": 0,
+                    "name": "container10-8000-tcp",
+                    "containerPort": 8000,
+                    "hostPort": 8000,
                     "protocol": "tcp",
                     "appProtocol": "http"
                 }
@@ -25,10 +25,10 @@
             "systemControls": []
         }
     ],
-    "family": "Definition9",
+    "family": "Definition10",
     "taskRoleArn": "arn:aws:iam::058264489106:role/ecsTaskExecutionRole",
     "executionRoleArn": "arn:aws:iam::058264489106:role/ecsTaskExecutionRole",
-    "revision": 2,
+    "revision": 1,
     "volumes": [],
     "status": "ACTIVE",
     "requiresAttributes": [
@@ -61,7 +61,7 @@
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2024-03-03T02:17:35.344Z",
+    "registeredAt": "2024-03-03T02:41:30.262Z",
     "registeredBy": "arn:aws:iam::058264489106:root",
     "tags": []
 }
