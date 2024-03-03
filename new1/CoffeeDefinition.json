@@ -4,9 +4,8 @@
         {
             "name": "CoffeeContainer3",
             "image": "058264489106.dkr.ecr.us-east-2.amazonaws.com/my-coff-app",
-            "cpu": 3072,
-            "memory": 8192,
-            "memoryReservation": 4096,
+            "cpu": 1024,
+            "memory": 500,
             "portMappings": [
                 {
                     "name": "container3-8000",
